@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="dualarm">
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro" />
+  
+  <link name="world" />
+
+  <xacro:ur5_robot prefix="left_" />
+  <xacro:ur5_robot prefix="right_" />
+<!-- The same configuration with the three robots in G314 (Only two robots are deployed) -->
+  <joint name="left_ur_world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="left_base_link"/>
+    <origin xyz="0 -0.66 0" rpy=" 0 0 0.785"/>
+  </joint>
+
+  <joint name="right_ur_world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="right_base_link"/>
+    <origin xyz="0 0.66 0" rpy="0 0 0.785"/>
+  </joint>
+</robot>
